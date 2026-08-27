@@ -30,6 +30,22 @@ function validateCreateRequest(req,res,next){
     }
     next();// THIS is for passing to the endpoint
 }
+
+
+function validateID(req,res,next){
+     const id = req.params.id;
+    if(! Number.isInteger(Number(id))){
+        ErrorResponse.message ='Please enter the detail in a valid format';
+        ErrorResponse.error = new AppError(["Id should be a number"],StatusCodes.INTERNAL_SERVER_ERROR);
+
+        return res
+                  .status(StatusCodes.BAD_REQUEST)
+                  .json(ErrorResponse);
+    }
+    next();
+
+}
 module.exports ={
-    validateCreateRequest
+    validateCreateRequest,
+     validateID
 }

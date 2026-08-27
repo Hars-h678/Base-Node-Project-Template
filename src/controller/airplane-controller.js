@@ -76,8 +76,33 @@ async function getAirplane(req,res) {
 
     }
 }
+
+
+async function  deleteAirplane(req,resp){
+   
+   try{
+   
+    const airplane = await AirplaneService.deleteAirplane(req.params.id)
+        SuccessResponse.message = 'Successfully deleted a airplane';
+        SuccessResponse.data = airplane
+    return resp
+              .status(StatusCodes.OK)
+              .json(SuccessResponse);
+
+   }catch(error){
+    ErrorResponse.message = 'Failed to delete an airplane'
+    ErrorResponse.error = error;
+     return resp
+              .status(StatusCodes.INTERNAL_SERVER_ERROR)
+              .json(ErrorResponse);
+   }
+}
+
+
 module.exports ={
     createAirplane,
     getAllAirplanes,
-    getAirplane
+    getAirplane,
+    deleteAirplane
+    
 }

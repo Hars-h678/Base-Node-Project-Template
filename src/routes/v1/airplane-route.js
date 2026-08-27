@@ -18,5 +18,8 @@ router
 
 
 router
-     .get('/:id', AirplaneController.getAirplane);
+     .get('/:id',AirplaneMiddleware.validateID, AirplaneController.getAirplane);
+
+router
+     .delete('/:id', AirplaneMiddleware.validateID,AirplaneController.deleteAirplane);     
 module.exports = router;
