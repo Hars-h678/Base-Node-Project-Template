@@ -15,4 +15,8 @@ router
         //api/v1/airplanes/---->GET
 router 
      .get('/',AirplaneController.getAllAirplanes);
+
+
+router
+     .get('/:id', AirplaneController.getAirplane);
 module.exports = router;
