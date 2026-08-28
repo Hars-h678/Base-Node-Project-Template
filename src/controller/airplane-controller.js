@@ -93,10 +93,15 @@ async function  deleteAirplane(req,resp){
     ErrorResponse.message = 'Failed to delete an airplane'
     ErrorResponse.error = error;
      return resp
-              .status(StatusCodes.INTERNAL_SERVER_ERROR)
+              .status(error.statusCode)
               .json(ErrorResponse);
    }
 }
+
+
+
+
+
 
 
 module.exports ={

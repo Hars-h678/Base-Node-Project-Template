@@ -9,6 +9,7 @@ class CrudRepository{
     async create(data){
         
             const response=await this.model.create(data);
+            console.log(response);
             return response;
 
     }
@@ -30,6 +31,7 @@ class CrudRepository{
     async getAll(){
        
             const response=await this.model.findAll();
+            if(!response) throw new AppError('The City Model is empty' , StatusCodes.NOT_FOUND);
             return response;// u can put whre clause here also 
        
     }
