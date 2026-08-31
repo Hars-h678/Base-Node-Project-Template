@@ -71,8 +71,8 @@ async function getAllFlights(query){
     // todo task that what if depearture and arrival airport
     try{
        const flights = await flightRepository.getAllFlights(customFilter,sortFilter);
-       console.log("empty");
-       console.log(flights);
+    //    console.log("empty");
+    //    console.log(flights);
        return flights;
 
     }catch(error){

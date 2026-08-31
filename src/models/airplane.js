@@ -12,8 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.hasMany(models.Flight,{
-        foreignKey:'airplaneID'
-      })
+        foreignKey:'airplaneID',
+        onDelete: 'CASCADE'
+      });
+      this.hasMany(models.Seat,{
+        foreignKey:'airplaneID',
+        onDelete : 'CASCADE'
+      });
     }
   }
   Airplane.init({
