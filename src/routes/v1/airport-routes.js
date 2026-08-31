@@ -13,11 +13,11 @@ router
 // api/v1/cities --->GET
 
 router
-      .get('/', AirportController.getAirport);
+      .get('/', AirportController.getAllAirports);
 
 
 router
-     .get('/:id', AirportController.getAllAirports);
+     .get('/:id', AirportController.getAirport);
 
 router
      .delete('/:id',  AirportController.deleteAirport);     

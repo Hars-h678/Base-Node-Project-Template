@@ -50,7 +50,7 @@ async function getAllAirports(req,res){
     }catch(error){
      ErrorResponse.message = 'Failed to fetched to all airport'
      ErrorResponse.error = error;
-     return resp
+     return res
               .status(error.StatusCodes)
               .json(ErrorResponse);
 
@@ -63,7 +63,7 @@ async function getAllAirports(req,res){
 
 async function getAirport(req,res) {
     try{
-        const airport = await AirportService.getAirport(req.params.cityId);
+        const airport = await AirportService.getAirport(req.params.id);
         SuccessResponse.message = 'Successfully fetched the airport';
         SuccessResponse.data = airport
         return res
@@ -72,6 +72,7 @@ async function getAirport(req,res) {
     }catch(error){
      ErrorResponse.message = 'Failed to fetched the airport'
      ErrorResponse.error = error;
+     console.log(error)
      return res
               .status(error.statusCode)
               .json(ErrorResponse);
@@ -84,7 +85,7 @@ async function  deleteAirport(req,resp){
    
    try{
    
-    const airplort = await AirportService.deleteAirport(req.params.cityId)
+    const airplort = await AirportService.deleteAirport(req.id)
         SuccessResponse.message = 'Successfully deleted a airport';
         SuccessResponse.data = airport
     return resp

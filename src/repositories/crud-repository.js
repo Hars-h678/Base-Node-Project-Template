@@ -23,6 +23,7 @@ class CrudRepository{
 
     async get(data){
             const response=await this.model.findByPk(data);
+            //console.log("hy")
             if(!response) throw new AppError('There is no data corrresponding to given Id', StatusCodes.NOT_FOUND);
             return response;
       

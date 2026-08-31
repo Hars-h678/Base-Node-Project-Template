@@ -1,6 +1,6 @@
 const { AirportRespository } = require("../repositories")
-
-
+const  AppError = require('../utils/errors/app-error')
+const { StatusCodes } = require('http-status-codes')
 const airportRepository = new AirportRespository();
 
 async function createAirport(data){
@@ -37,12 +37,14 @@ async function getAirports(){
 
 async function getAirport(id) {
    try{
+    console.log(id);
     const airport = await airportRepository.get(id);
     return airport;
    }catch(error){
-    console.log(error.name);
+    console.log(error);
     if(error.statusCode == StatusCodes.NOT_FOUND){
-      throw new AppError('There is no data corrresponding to given Id', error.statusCode )
+        console.log(error.statusCode);
+      throw new AppError('There is no data corrresponding to given Id', StatusCodes.NOT_FOUND )
     }
      throw new AppError('Cannot fetch data new airport object' , StatusCodes.INTERNAL_SERVER_ERROR)
    }
